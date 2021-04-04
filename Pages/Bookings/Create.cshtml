@@ -39,6 +39,16 @@
                 <span asp-validation-for="Bookings.Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Bookings.CustomerID" class="control-label"></label>
+                <input asp-for="Bookings.CustomerID" class="form-control" />
+                <span asp-validation-for="Bookings.CustomerID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bookings.BikeID" class="control-label"></label>
+                <input asp-for="Bookings.BikeID" class="form-control" />
+                <span asp-validation-for="Bookings.BikeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

@@ -40,7 +40,6 @@ namespace WebApplication3.Pages.Bookings
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-
             if (id == null)
             {
                 return NotFound();
