@@ -30,7 +30,7 @@ namespace WebApplication3.Pages.Customers
                 return NotFound();
             }
 
-            Customers = await _context.Customers.FirstOrDefaultAsync(m => m.ID == id);
+            Customers = await _context.Customers.FirstOrDefaultAsync(m => m.CustomerId == id);
 
             if (Customers == null)
             {
@@ -56,7 +56,7 @@ namespace WebApplication3.Pages.Customers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomersExists(Customers.ID))
+                if (!CustomersExists(Customers.CustomerId))
                 {
                     return NotFound();
                 }
@@ -71,7 +71,7 @@ namespace WebApplication3.Pages.Customers
 
         private bool CustomersExists(int id)
         {
-            return _context.Customers.Any(e => e.ID == id);
+            return _context.Customers.Any(e => e.CustomerId == id);
         }
     }
 }

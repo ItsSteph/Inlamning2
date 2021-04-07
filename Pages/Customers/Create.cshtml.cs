@@ -28,6 +28,8 @@ namespace WebApplication3.Pages.Customers
         public Models.Customers Customers { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+
+        //When posting data the program will check if everything is ok before saving and redirection you to the index page
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

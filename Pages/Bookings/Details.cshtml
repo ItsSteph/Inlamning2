@@ -18,44 +18,20 @@
             @Html.DisplayFor(model => model.Bookings.Duration)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Bookings.WeekOrDay)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Bookings.WeekOrDay)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Bookings.TotalPrice)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Bookings.TotalPrice)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Bookings.Currency)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Bookings.Currency)
-        </dd>
-        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Bookings.Quantity)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Bookings.Quantity)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Bookings.CustomerID)
+            @Html.DisplayNameFor(model => model.Bookings.CustomerId)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Bookings.CustomerID)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Bookings.BikeID)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Bookings.BikeID)
+            @Html.DisplayFor(model => model.Bookings.BikeId)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Bookings.ID">Edit</a> |
+    <a asp-page="./Edit" asp-route-id="@Model.Bookings.BookingId">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

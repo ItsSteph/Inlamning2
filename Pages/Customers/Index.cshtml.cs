@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication3.Data;
 using WebApplication3.Models;
@@ -18,12 +19,45 @@ namespace WebApplication3.Pages.Customers
         {
             _context = context;
         }
+        
+
+        public string LastNameSort { get; set; }
+        public string FirstNameSort { get; set; }
+        public string CurrentFilter { get; set; }
 
         public IList<Models.Customers> Customers { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder, string searchString)
         {
-            Customers = await _context.Customers.ToListAsync();
+            
+            
+            LastNameSort = String.IsNullOrEmpty(sortOrder) ? "lastname_desc" : "";
+            FirstNameSort = String.IsNullOrEmpty(sortOrder) ? "firstname_desc" : "";
+
+            IQueryable<Models.Customers> customerIQ = from c in _context.Customers select c;
+
+            CurrentFilter = searchString;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                customerIQ = customerIQ.Where(c => c.LastName.Contains(searchString)
+                                                   || c.FirstName.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "lastname_desc":
+                    customerIQ = customerIQ.OrderByDescending(b => b.LastName);
+                    break;
+                case "firstname_desc":
+                    customerIQ = customerIQ.OrderByDescending(b => b.FirstName);
+                    break;
+                default:
+                    customerIQ = customerIQ.OrderBy(c => c.CustomerId);
+                    break;
+            }
+
+            Customers = await customerIQ.AsNoTracking().ToListAsync();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace WebApplication3.Pages.Bikes
                 return NotFound();
             }
 
-            Bikes = await _context.Bikes.FirstOrDefaultAsync(m => m.ID == id);
+            Bikes = await _context.Bikes.FirstOrDefaultAsync(m => m.BikeId == id);
 
             if (Bikes == null)
             {
@@ -56,7 +56,7 @@ namespace WebApplication3.Pages.Bikes
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BikesExists(Bikes.ID))
+                if (!BikesExists(Bikes.BikeId))
                 {
                     return NotFound();
                 }
@@ -71,7 +71,7 @@ namespace WebApplication3.Pages.Bikes
 
         private bool BikesExists(int id)
         {
-            return _context.Bikes.Any(e => e.ID == id);
+            return _context.Bikes.Any(e => e.BikeId == id);
         }
     }
 }

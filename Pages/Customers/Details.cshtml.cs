@@ -28,7 +28,7 @@ namespace WebApplication3.Pages.Customers
                 return NotFound();
             }
 
-            Customers = await _context.Customers.FirstOrDefaultAsync(m => m.ID == id);
+            Customers = await _context.Customers.FirstOrDefaultAsync(m => m.CustomerId == id);
 
             if (Customers == null)
             {

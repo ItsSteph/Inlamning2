@@ -29,7 +29,7 @@ namespace WebApplication3.Pages.Bookings
                 return NotFound();
             }
 
-            Bookings = await _context.Bookings.FirstOrDefaultAsync(m => m.ID == id);
+            Bookings = await _context.Bookings.FirstOrDefaultAsync(m => m.BookingId == id);
 
             if (Bookings == null)
             {

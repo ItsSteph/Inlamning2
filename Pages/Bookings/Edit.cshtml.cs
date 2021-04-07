@@ -30,7 +30,7 @@ namespace WebApplication3.Pages.Bookings
                 return NotFound();
             }
 
-            Bookings = await _context.Bookings.FirstOrDefaultAsync(m => m.ID == id);
+            Bookings = await _context.Bookings.FirstOrDefaultAsync(m => m.BookingId == id);
 
             if (Bookings == null)
             {
@@ -56,7 +56,7 @@ namespace WebApplication3.Pages.Bookings
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BookingsExists(Bookings.ID))
+                if (!BookingsExists(Bookings.BookingId))
                 {
                     return NotFound();
                 }
@@ -71,7 +71,7 @@ namespace WebApplication3.Pages.Bookings
 
         private bool BookingsExists(int id)
         {
-            return _context.Bookings.Any(e => e.ID == id);
+            return _context.Bookings.Any(e => e.BookingId == id);
         }
     }
 }

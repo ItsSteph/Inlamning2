@@ -28,6 +28,7 @@ namespace WebApplication3.Pages.Bookings
         public Models.Bookings Bookings { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        //When posting data the program will check if everything if entries are valid. If  valid the changes made will be saved.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

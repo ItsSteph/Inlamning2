@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,20 +9,17 @@ namespace WebApplication3.Models
 {
     public class Bookings
     {
-        public int ID { get; set; }
-        public int? Duration { get; set; }
-        public string WeekOrDay { get; set; }
-        public int? TotalPrice { get; set; }
-        public string Currency { get; set; }
+        [Key]
+        public int BookingId { get; set; }
+        public string Duration { get; set; }
         public int? Quantity { get; set; }
-
-        public int CustomerID { get; set; }
-        public Customers Customers { get; set; }
-
-        public int BikeID { get; set; }
-        public Bikes Bikes { get; set; }
+        public Customers Customer { get; set; }
+        public int CustomerId { get; set; }
 
 
+        public Bikes Bike { get; set; }
+
+        public int BikeId { get; set; }
 
 
     }

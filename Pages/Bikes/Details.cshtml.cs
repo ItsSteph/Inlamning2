@@ -28,7 +28,7 @@ namespace WebApplication3.Pages.Bikes
                 return NotFound();
             }
 
-            Bikes = await _context.Bikes.FirstOrDefaultAsync(m => m.ID == id);
+            Bikes = await _context.Bikes.FirstOrDefaultAsync(m => m.BikeId == id);
 
             if (Bikes == null)
             {
