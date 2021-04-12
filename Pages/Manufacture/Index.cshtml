@@ -1,0 +1,42 @@
+﻿@page
+@model WebApplication3.Pages.Manufacture.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacture[0].ManufactureName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacture[0].ManufactureId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Manufacture) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManufactureName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManufactureId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ManufactureId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ManufactureId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ManufactureId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

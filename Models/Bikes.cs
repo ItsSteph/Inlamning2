@@ -16,6 +16,8 @@ namespace WebApplication3.Models
 
 
         public ICollection<Bookings> Bookings { get; set; }
+        public Brand Brand { get; set; }
+        public int BrandId { get; set; }
 
 
     }

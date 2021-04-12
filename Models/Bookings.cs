@@ -13,6 +13,8 @@ namespace WebApplication3.Models
         public int BookingId { get; set; }
         public string Duration { get; set; }
         public int? Quantity { get; set; }
+
+
         public Customers Customer { get; set; }
         public int CustomerId { get; set; }
 

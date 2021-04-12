@@ -168,3 +168,13 @@ C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Raz
 C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Razor\Pages\Customers\Details.cshtml.g.cs
 C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Razor\Pages\Customers\Edit.cshtml.g.cs
 C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Razor\Pages\Customers\Index.cshtml.g.cs
+C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Razor\Pages\Brand\Create.cshtml.g.cs
+C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Razor\Pages\Brand\Delete.cshtml.g.cs
+C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Razor\Pages\Brand\Details.cshtml.g.cs
+C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Razor\Pages\Brand\Edit.cshtml.g.cs
+C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Razor\Pages\Brand\Index.cshtml.g.cs
+C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Razor\Pages\Manufacture\Create.cshtml.g.cs
+C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Razor\Pages\Manufacture\Delete.cshtml.g.cs
+C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Razor\Pages\Manufacture\Details.cshtml.g.cs
+C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Razor\Pages\Manufacture\Edit.cshtml.g.cs
+C:\Users\steph\source\repos\WebApplication3\WebApplication3\obj\Debug\net5.0\Razor\Pages\Manufacture\Index.cshtml.g.cs

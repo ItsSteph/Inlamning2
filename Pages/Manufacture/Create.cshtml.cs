@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApplication3.Data;
 using WebApplication3.Models;
 
-namespace WebApplication3.Pages.Bookings
+namespace WebApplication3.Pages.Manufacture
 {
     public class CreateModel : PageModel
     {
@@ -25,24 +25,20 @@ namespace WebApplication3.Pages.Bookings
         }
 
         [BindProperty]
-        public Models.Bookings Bookings { get; set; }
-        public string Messages { get; set; }
+        public Models.Manufacture Manufacture { get; set; }
+
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        //When posting data the program will check if everything if entries are valid. If  valid the changes made will be saved.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
-
                 return Page();
             }
 
-
-            _context.Bookings.Add(Bookings);
+            _context.Manufacture.Add(Manufacture);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
-            
         }
     }
 }

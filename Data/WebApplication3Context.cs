@@ -22,8 +22,8 @@ namespace WebApplication3.Data
             modelBuilder
                 .Entity<Customers>()
                 .HasData(
-                    new Customers {CustomerId = 1, FirstName = "Anna", LastName = "Johnson", EmailAddress = "jonse@hotmail.com", PhoneNumber = 123456789},
-                    new Customers { CustomerId = 2, FirstName = "Eivind", LastName = "Ingemann", EmailAddress = "eivindarbast@ingemann.se", PhoneNumber = 123456789},
+                    new Customers { CustomerId = 1, FirstName = "Anna", LastName = "Johnson", EmailAddress = "jonse@hotmail.com", PhoneNumber = 123456789 },
+                    new Customers { CustomerId = 2, FirstName = "Eivind", LastName = "Ingemann", EmailAddress = "eivindarbast@ingemann.se", PhoneNumber = 123456789 },
                     new Customers { CustomerId = 3, FirstName = "Magdalena", LastName = "Nilson", EmailAddress = "magdalena.nilson@hotmail.com", PhoneNumber = 123456789 },
                     new Customers { CustomerId = 4, FirstName = "Herman", LastName = "Nilson", EmailAddress = "herman.nilson@hotmail.com", PhoneNumber = 123456789 },
                     new Customers { CustomerId = 5, FirstName = "Gullwi", LastName = "Josefsson", EmailAddress = "gullwijose@gmail.com", PhoneNumber = 123456789 },
@@ -37,7 +37,7 @@ namespace WebApplication3.Data
             modelBuilder
                 .Entity<Bookings>()
                 .HasData(
-                    new Bookings { BookingId = 1, Duration = "1 DAY", Quantity = 1, CustomerId = 1, BikeId = 1},
+                    new Bookings { BookingId = 1, Duration = "1 DAY", Quantity = 1, CustomerId = 1, BikeId = 1, },
                     new Bookings { BookingId = 2, Duration = "1 DAY", Quantity = 1, CustomerId = 1, BikeId = 1 },
                     new Bookings { BookingId = 3, Duration = "1 DAY", Quantity = 1, CustomerId = 6, BikeId = 3 },
                     new Bookings { BookingId = 4, Duration = "1 DAY", Quantity = 1, CustomerId = 7, BikeId = 2 },
@@ -49,12 +49,28 @@ namespace WebApplication3.Data
                 .Entity<Bikes>()
                 .HasData(
 
-                    new Bikes {BikeId = 1, Model = "Community S", Price = 300, Currency = "SEK"},
-                    new Bikes {BikeId = 2, Model = "Women's Cruiser", Price = 375, Currency = "SEK" },
-                    new Bikes {BikeId = 3, Model = "City Classic", Price = 300, Currency = "SEK" },
-                    new Bikes {BikeId = 4, Model = "Speed Roller+", Price = 300, Currency = "SEK" },
-                    new Bikes {BikeId = 5, Model = "Racing", Price = 450, Currency = "SEK" },
-                    new Bikes {BikeId = 6, Model = "Urban City Commuter", Price = 300, Currency = "SEK" }
+                    new Bikes { BikeId = 1, Model = "Community S", Price = 300, Currency = "SEK", BrandId = 1},
+                    new Bikes { BikeId = 2, Model = "Women's Cruiser", Price = 375, Currency = "SEK", BrandId = 2},
+                    new Bikes { BikeId = 3, Model = "City Classic", Price = 300, Currency = "SEK", BrandId = 3},
+                    new Bikes { BikeId = 4, Model = "Speed Roller+", Price = 300, Currency = "SEK", BrandId = 2},
+                    new Bikes { BikeId = 5, Model = "Street 687", Price = 450, Currency = "SEK", BrandId = 3},
+                    new Bikes { BikeId = 6, Model = "Urban City Commuter", Price = 300, Currency = "SEK", BrandId = 1}
+                );
+
+            modelBuilder
+                .Entity<Manufacture>()
+                .HasData(
+                    new Manufacture {ManufactureId = 1, ManufactureName = "Biltema"},
+                    new Manufacture { ManufactureId = 2, ManufactureName = "Huffy" },
+                    new Manufacture { ManufactureId = 3, ManufactureName = "Kildemose" }
+                );
+
+            modelBuilder
+                .Entity<Brand>()
+                .HasData(
+                    new Brand {BrandId = 1, BrandName = "Yosemity", ManufactureId = 1},
+                    new Brand {BrandId = 2, BrandName = "Nassau", ManufactureId = 2},
+                    new Brand {BrandId = 3, BrandName = "Kildemose", ManufactureId = 3}
                 );
 
         }
@@ -64,6 +80,10 @@ namespace WebApplication3.Data
         public DbSet<WebApplication3.Models.Bookings> Bookings { get; set; }
 
         public DbSet<WebApplication3.Models.Customers> Customers { get; set; }
+
+        public DbSet<WebApplication3.Models.Brand> Brand { get; set; }
+
+        public DbSet<WebApplication3.Models.Manufacture> Manufacture { get; set; }
 
     }
 }

@@ -10,7 +10,7 @@ using WebApplication3.Data;
 namespace WebApplication3.Migrations
 {
     [DbContext(typeof(WebApplication3Context))]
-    [Migration("20210407172512_InitialCreate")]
+    [Migration("20210412072202_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,6 +28,9 @@ namespace WebApplication3.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("BrandId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Currency")
                         .HasColumnType("nvarchar(max)");
 
@@ -39,12 +42,15 @@ namespace WebApplication3.Migrations
 
                     b.HasKey("BikeId");
 
+                    b.HasIndex("BrandId");
+
                     b.ToTable("Bikes");
 
                     b.HasData(
                         new
                         {
                             BikeId = 1,
+                            BrandId = 1,
                             Currency = "SEK",
                             Model = "Community S",
                             Price = 300
@@ -52,6 +58,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             BikeId = 2,
+                            BrandId = 2,
                             Currency = "SEK",
                             Model = "Women's Cruiser",
                             Price = 375
@@ -59,6 +66,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             BikeId = 3,
+                            BrandId = 3,
                             Currency = "SEK",
                             Model = "City Classic",
                             Price = 300
@@ -66,6 +74,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             BikeId = 4,
+                            BrandId = 2,
                             Currency = "SEK",
                             Model = "Speed Roller+",
                             Price = 300
@@ -73,13 +82,15 @@ namespace WebApplication3.Migrations
                         new
                         {
                             BikeId = 5,
+                            BrandId = 3,
                             Currency = "SEK",
-                            Model = "Racing",
+                            Model = "Street 687",
                             Price = 450
                         },
                         new
                         {
                             BikeId = 6,
+                            BrandId = 1,
                             Currency = "SEK",
                             Model = "Urban City Commuter",
                             Price = 300
@@ -161,6 +172,46 @@ namespace WebApplication3.Migrations
                             CustomerId = 9,
                             Duration = "1 DAY",
                             Quantity = 1
+                        });
+                });
+
+            modelBuilder.Entity("WebApplication3.Models.Brand", b =>
+                {
+                    b.Property<int>("BrandId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BrandName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ManufactureId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BrandId");
+
+                    b.HasIndex("ManufactureId");
+
+                    b.ToTable("Brand");
+
+                    b.HasData(
+                        new
+                        {
+                            BrandId = 1,
+                            BrandName = "Yosemity",
+                            ManufactureId = 1
+                        },
+                        new
+                        {
+                            BrandId = 2,
+                            BrandName = "Nassau",
+                            ManufactureId = 2
+                        },
+                        new
+                        {
+                            BrandId = 3,
+                            BrandName = "Kildemose",
+                            ManufactureId = 3
                         });
                 });
 
@@ -270,6 +321,49 @@ namespace WebApplication3.Migrations
                         });
                 });
 
+            modelBuilder.Entity("WebApplication3.Models.Manufacture", b =>
+                {
+                    b.Property<int>("ManufactureId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ManufactureName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ManufactureId");
+
+                    b.ToTable("Manufacture");
+
+                    b.HasData(
+                        new
+                        {
+                            ManufactureId = 1,
+                            ManufactureName = "Biltema"
+                        },
+                        new
+                        {
+                            ManufactureId = 2,
+                            ManufactureName = "Huffy"
+                        },
+                        new
+                        {
+                            ManufactureId = 3,
+                            ManufactureName = "Kildemose"
+                        });
+                });
+
+            modelBuilder.Entity("WebApplication3.Models.Bikes", b =>
+                {
+                    b.HasOne("WebApplication3.Models.Brand", "Brand")
+                        .WithMany("Bikes")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+                });
+
             modelBuilder.Entity("WebApplication3.Models.Bookings", b =>
                 {
                     b.HasOne("WebApplication3.Models.Bikes", "Bike")
@@ -289,14 +383,35 @@ namespace WebApplication3.Migrations
                     b.Navigation("Customer");
                 });
 
+            modelBuilder.Entity("WebApplication3.Models.Brand", b =>
+                {
+                    b.HasOne("WebApplication3.Models.Manufacture", "Manufacture")
+                        .WithMany("Brands")
+                        .HasForeignKey("ManufactureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Manufacture");
+                });
+
             modelBuilder.Entity("WebApplication3.Models.Bikes", b =>
                 {
                     b.Navigation("Bookings");
                 });
 
+            modelBuilder.Entity("WebApplication3.Models.Brand", b =>
+                {
+                    b.Navigation("Bikes");
+                });
+
             modelBuilder.Entity("WebApplication3.Models.Customers", b =>
                 {
                     b.Navigation("Bookings");
+                });
+
+            modelBuilder.Entity("WebApplication3.Models.Manufacture", b =>
+                {
+                    b.Navigation("Brands");
                 });
 #pragma warning restore 612, 618
         }
