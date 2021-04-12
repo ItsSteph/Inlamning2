@@ -21,12 +21,15 @@ namespace WebApplication3.Pages.Brand
 
         public IList<Models.Brand> Brand { get;set; }
 
+        
         public async Task OnGetAsync()
         {
             Brand = await _context.Brand
                 .Include(b => b.Manufacture).ToListAsync();
 
             IQueryable<Models.Brand> brandIQ = from b in _context.Brand select b;
+
+            //Connection between brand and manufacture makes it possible to read related data in manufacture and display it in brand.
             Brand = await brandIQ
                 .Include(b => b.Manufacture)
                 .ToListAsync();

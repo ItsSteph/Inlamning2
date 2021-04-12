@@ -27,6 +27,7 @@ namespace WebApplication3.Pages.Customers
 
         public IList<Models.Customers> Customers { get;set; }
 
+        //Handles sorting and filtering
         public async Task OnGetAsync(string sortOrder, string searchString)
         {
             

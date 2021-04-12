@@ -26,6 +26,7 @@ namespace WebApplication3.Pages.Bookings
 
         public IList<Models.Bookings> Booking { get;set; }
 
+        //A good mix of actions in this method. It handles sorting and the connection between customers, bookings and bikes.
 
         public async Task OnGetAsync(string sortOrder)
         {
